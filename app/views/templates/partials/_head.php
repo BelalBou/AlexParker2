@@ -11,7 +11,7 @@
     <meta name="copyright" content="company name" />
     <meta name="robots" content="index,follow" />
 
-    <title>DevBlog - Personal Blog Template</title>
+    <title><?php echo $title?></title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon/favicon.ico" />
