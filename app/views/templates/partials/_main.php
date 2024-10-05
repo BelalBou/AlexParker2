@@ -1,1 +1,0 @@
-<?php include "../app/views/templates/partials/_aside.php"; ?>
