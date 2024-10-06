@@ -45,3 +45,4 @@ function addAction(PDO $connexion, array $data) {
     header('Location: ' . BASE_PUBLIC_URL . 'posts');
 
 }
+

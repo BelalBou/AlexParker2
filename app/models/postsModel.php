@@ -46,3 +46,4 @@ function createOne(PDO $connexion, array $data): bool
     $rs->execute();
     return $connexion->lastInsertId();
 }
+
