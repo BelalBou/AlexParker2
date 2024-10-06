@@ -12,7 +12,7 @@
     <div class="col-md-12 content-page">
         <div class="col-md-12 blog-post">
         <div>
-            <img src="https://picsum.photos/810/326?random=<?php echo $post['id']; ?>" alt="">
+            <img src="https://picsum.photos/810/326?random=<?php echo $post['postID']; ?>" alt="">
         </div>
 
         <!-- Post Headline Start -->
@@ -43,10 +43,8 @@
 
         <!-- Post Buttons -->
         <div>
-            <a href="form.html" type="button" class="btn btn-primary"
-            >Edit Post</a
-            >
-            <a
+        <a href="posts/<?php echo $post['postID']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/form.html" type="button" class="btn btn-primary">Edit Post</a>
+        <a
             href="#"
             type="button"
             class="btn btn-secondary"

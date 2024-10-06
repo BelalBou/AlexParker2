@@ -30,14 +30,14 @@ RewriteRule ^posts/add/insert.html$ index.php?posts=add [L]
 # # PATTERN: /posts/id/slug-du-post/edit/form.html
 # # URL: ?posts=editForm&id=$1
 
-# RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+/edit/form\.html$ index.php?posts=editForm&id=$1 [L]
+RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+/edit/form\.html$ index.php?posts=editForm&id=$1 [L]
 
 
 # # ROUTE DE MISE A JOUR D'UN POST (UPDATE)
 # # PATTERN: /posts/id/slug-du-post/edit/update.html
 # # URL: ?posts=update&id=$1
 
-# RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+/edit/update\.html$ index.php?posts=update&id=$1 [L]
+RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+/edit/update\.html$ index.php?posts=update&id=$1 [L]
 #--------------------------------------------------
 
 RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|woff|woff2|eot|ttf|svg|pdf)$ [NC]
