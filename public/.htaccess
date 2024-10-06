@@ -23,7 +23,8 @@ RewriteRule ^posts/add/form\.html$ index.php?posts=addForm [L]
 # #PATTERN: /posts/add/insert.html
 # #URL: ?/posts=add
 
-# RewriteRule ^posts/add/insert.html$ index.php?posts=add [L]
+RewriteRule ^posts/add/insert.html$ index.php?posts=add [L]
+
 
 # # ROUTE D'AFFICHAGE DU FORMULAIRE D'EDITION D'UN POST
 # # PATTERN: /posts/id/slug-du-post/edit/form.html

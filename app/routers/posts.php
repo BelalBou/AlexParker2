@@ -11,6 +11,9 @@ switch ($_GET['posts']):
     case 'addForm':
         PostsController\addFormAction($connexion);
         break;
+    case 'add':
+        PostsController\addAction($connexion, $_POST);
+        break;
     default:
         PostsController\indexAction($connexion);
 endswitch;

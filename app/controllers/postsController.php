@@ -6,8 +6,8 @@ use \PDO;
 function indexAction(PDO $connexion)
 {
 
-    include_once '../app/models/postModel.php';
-    $posts = \App\Models\PostModel\findAll($connexion);
+    include_once '../app/models/postsModel.php';
+    $posts = \App\Models\PostsModel\findAll($connexion);
 
 
     global $content, $title;
@@ -19,8 +19,8 @@ function indexAction(PDO $connexion)
 
 function showAction(PDO $connexion, int $id)
 {
-    include_once '../app/models/postModel.php';
-    $post = \App\Models\PostModel\findOneById($connexion, $id);
+    include_once '../app/models/postsModel.php';
+    $post = \App\Models\PostsModel\findOneById($connexion, $id);
 
     global $content, $title;
     $title = $post['title'];
@@ -36,4 +36,12 @@ function addFormAction(PDO $connexion){
     ob_start();
     include '../app/views/posts/addForm.php';
     $content = ob_get_clean();
+}
+
+function addAction(PDO $connexion, array $data) {
+
+    include_once "../app/models/postsModel.php";
+    $id = \App\Models\PostsModel\createOne($connexion, $data);
+    header('Location: ' . BASE_PUBLIC_URL . 'posts');
+
 }

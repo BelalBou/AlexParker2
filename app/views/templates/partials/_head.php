@@ -1,4 +1,4 @@
-
+<base href="<?php echo BASE_PUBLIC_URL ; ?>">
     <!-- Meta Tag -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,10 +23,10 @@
     />
 
     <!-- All CSS Plugins -->
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PUBLIC_URL; ?>css/plugin.css" />
+    <link rel="stylesheet" type="text/css" href="css/plugin.css" />
 
     <!-- Main CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PUBLIC_URL; ?>css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
     <!-- Google Web Fonts  -->
     <link
@@ -40,4 +40,4 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <base href="<?php echo BASE_PUBLIC_URL ; ?>">
+
