@@ -23,10 +23,10 @@
     />
 
     <!-- All CSS Plugins -->
-    <link rel="stylesheet" type="text/css" href="css/plugin.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PUBLIC_URL; ?>css/plugin.css" />
 
     <!-- Main CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PUBLIC_URL; ?>css/style.css" />
 
     <!-- Google Web Fonts  -->
     <link
@@ -39,3 +39,5 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <base href="<?php echo BASE_PUBLIC_URL ; ?>">

@@ -1,9 +1,12 @@
 <?php
+    
 
-//route par défaut
-//pattern: /
-// CTRL: pagesController
-// ACTION: homeAction
+use App\Controllers\PostsController;
 
-include_once "../app/controllers/pagesController.php";
-\App\Controllers\PagesController\homeAction($connexion);
+if(isset($_GET['id'])):
+include_once "../app/controllers/postsController.php";
+\App\Controllers\PostsController\showAction($connexion, $_GET['id']);
+else :
+include_once "../app/controllers/postsController.php";
+\App\Controllers\PostsController\indexAction($connexion);
+endif;
