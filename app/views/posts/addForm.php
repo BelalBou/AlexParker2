@@ -23,7 +23,7 @@
       <!-- Post Headline End -->
 
       <!-- Form Start -->
-      <form action="posts/add/insert.html" method="POST">
+      <form action="posts/add/insert.html" method="POST" enctype="multipart/form-data>
         <div class="form-group">
           <label for="title">Title</label>
           <input
@@ -50,6 +50,7 @@
             type="file"
             class="form-control-file btn btn-primary"
             id="exampleFormControlFile1"
+            name="image" 
           />
         </div>
         <div class="form-group">

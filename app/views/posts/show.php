@@ -9,7 +9,7 @@
     <div class="col-md-12 content-page">
         <div class="col-md-12 blog-post">
         <div>
-            <img src="https://picsum.photos/810/326?random=<?php echo $post['postID']; ?>" alt="">
+            <img src="<?php echo $post['image']; ?>" alt="">
         </div>
 
         <!-- Post Headline Start -->

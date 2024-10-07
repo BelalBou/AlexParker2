@@ -20,7 +20,7 @@
         <!-- Post Headline End -->
 
         <!-- Form Start -->
-        <form action="posts/<?php echo $post['postID']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/update.html" method="POST">
+        <form action="posts/<?php echo $post['postID']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/update.html" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="title">Title</label>
             <input

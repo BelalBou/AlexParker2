@@ -36,14 +36,15 @@ function findOneById(PDO $connexion, $id)
 
 function createOne(PDO $connexion, array $data): bool
 {
-    $sql = "INSERT INTO posts (title, text, quote, created_at, category_id)
-            VALUES (:title, :text, :quote, NOW(), :category_id)";
+    $sql = "INSERT INTO posts (title, text, quote, created_at, category_id, image)
+            VALUES (:title, :text, :quote, NOW(), :category_id, :image)";
 
     $rs = $connexion->prepare($sql);
     $rs->bindValue(':title', $data['title'], PDO::PARAM_STR);
     $rs->bindValue(':text', $data['text'], PDO::PARAM_STR);
     $rs->bindValue(':quote', $data['quote'], PDO::PARAM_STR);
     $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_INT);
+    $rs->bindValue(':image', $data['image'], PDO::PARAM_STR);
     $rs->execute();
     
     return $connexion->lastInsertId();
@@ -55,7 +56,8 @@ function updateOneById(PDO $connexion, int $id, array $data): bool
             SET title = :title,
             text = :text,
             quote = :quote,
-            category_id = :category_id
+            category_id = :category_id,
+            image = IF(:image != '', :image, image)
             WHERE id = :id";
 
     $rs = $connexion->prepare($sql);
@@ -63,6 +65,7 @@ function updateOneById(PDO $connexion, int $id, array $data): bool
     $rs->bindValue(':text', $data['text'], PDO::PARAM_STR);
     $rs->bindValue(':quote', $data['quote'], PDO::PARAM_STR);
     $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_INT);
+    $rs->bindValue(':image', $data['image'], PDO::PARAM_STR);
     $rs->bindValue(':id', $id, PDO::PARAM_INT);
 
     return $rs->execute();
