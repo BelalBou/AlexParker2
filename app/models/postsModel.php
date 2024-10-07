@@ -2,27 +2,30 @@
 
 namespace App\Models\PostsModel;
 
+use PDO;
 
-use \PDO;
-
-function findAll(PDO $connexion)
+function findAll(PDO $connexion, $limit = 10, $offset = 0)
 {
     $sql = "SELECT *, p.id as postID, c.id as categoryID
-    FROM posts p
-    INNER JOIN categories c ON p.category_id = c.id
-    ORDER BY p.created_at 
-    DESC LIMIT 10";
+            FROM posts p
+            INNER JOIN categories c ON p.category_id = c.id
+            ORDER BY p.created_at DESC
+            LIMIT :limit OFFSET :offset";
 
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $rs->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $rs->execute();
 
-    return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function findOneById(PDO $connexion, $id)
 {
     $sql = "SELECT *, p.id as postID, c.id as categoryID
-    FROM posts p
-    INNER JOIN categories c ON p.category_id = c.id
-    WHERE p.id = :id";
+            FROM posts p
+            INNER JOIN categories c ON p.category_id = c.id
+            WHERE p.id = :id";
 
     $rs = $connexion->prepare($sql);
     $rs->bindValue(':id', $id, PDO::PARAM_INT);
@@ -31,10 +34,8 @@ function findOneById(PDO $connexion, $id)
     return $rs->fetch(PDO::FETCH_ASSOC);
 }
 
-
 function createOne(PDO $connexion, array $data): bool
 {
-
     $sql = "INSERT INTO posts (title, text, quote, created_at, category_id)
             VALUES (:title, :text, :quote, NOW(), :category_id)";
 
@@ -44,10 +45,11 @@ function createOne(PDO $connexion, array $data): bool
     $rs->bindValue(':quote', $data['quote'], PDO::PARAM_STR);
     $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_INT);
     $rs->execute();
+    
     return $connexion->lastInsertId();
 }
 
-function updateOneById(PDO $connexion, int $id, array $data): bool  
+function updateOneById(PDO $connexion, int $id, array $data): bool
 {
     $sql = "UPDATE posts 
             SET title = :title,
@@ -64,16 +66,21 @@ function updateOneById(PDO $connexion, int $id, array $data): bool
     $rs->bindValue(':id', $id, PDO::PARAM_INT);
 
     return $rs->execute();
-    
 }
 
-function deleteOneById(PDO $connexion, int $id): bool {
-    
+function deleteOneById(PDO $connexion,int $id): bool
+{
     $sql = "DELETE FROM posts 
-            WHERE id = :id";
+    WHERE id = :id";
 
     $rs = $connexion->prepare($sql);
     $rs->bindValue(':id', $id, PDO::PARAM_INT);
     
     return $rs->execute();
+}
+
+function countAllPosts(PDO $connexion)
+{
+    $sql = "SELECT COUNT(*) as total FROM posts";
+    return $connexion->query($sql)->fetch(PDO::FETCH_ASSOC)['total'];
 }

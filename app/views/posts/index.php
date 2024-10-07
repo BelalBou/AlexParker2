@@ -25,4 +25,4 @@
 </div>
 <!-- Blog Post End -->
 
-<?php include_once '../app/views/templates/partials/_nav.php'; ?>
+<?php include_once '../app/views/templates/partials/_pagination.php'; ?>

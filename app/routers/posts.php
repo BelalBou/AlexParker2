@@ -24,7 +24,6 @@ switch ($_GET['posts']):
         PostsController\deleteAction($connexion, $_GET['id']);
         break;
     default:
-        PostsController\indexAction($connexion);
+        PostsController\indexAction($connexion, $page);
         break;
 endswitch;
-

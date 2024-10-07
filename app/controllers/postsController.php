@@ -3,12 +3,19 @@
 namespace App\Controllers\PostsController;
 use \PDO;
 
-function indexAction(PDO $connexion)
+function indexAction(PDO $connexion, $page)
 {
+    global $totalPages;
+    
+    $limit = 10; // Nombre de posts par page 
+    $offset = ($page - 1) * $limit; // Calcul de l'offset
 
     include_once '../app/models/postsModel.php';
-    $posts = \App\Models\PostsModel\findAll($connexion);
+    $posts = \App\Models\PostsModel\findAll($connexion, $limit, $offset);
 
+    // Obtenir le nombre total de posts pour la pagination
+    $totalPosts = \App\Models\PostsModel\countAllPosts($connexion);
+    $totalPages = ceil($totalPosts / $limit);
 
     global $content, $title;
     $title = "Alex Parker - Blog";
