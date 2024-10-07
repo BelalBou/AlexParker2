@@ -1,12 +1,9 @@
 
 <div class="row">
     <div class="sub-title">
-        <a href="?post" title="Go to Home Page"
-        ><h2>Back Home</h2></a
-        >
-        <a href="#comment" class="smoth-scroll"
-        ><i class="icon-bubbles"></i
-        ></a>
+        <a href="?post" title="Go to Home Page">
+            <h2>Back Home</h2></a>
+        <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
     </div>
 
     <div class="col-md-12 content-page">
@@ -45,7 +42,7 @@
         <div>
         <a href="posts/<?php echo $post['postID']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/form.html" type="button" class="btn btn-primary">Edit Post</a>
         <a
-            href="#"
+            href="posts/<?php echo $post['postID']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/delete.html"
             type="button"
             class="btn btn-secondary"
             role="button"

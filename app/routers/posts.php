@@ -20,6 +20,11 @@ switch ($_GET['posts']):
     case 'update':
         PostsController\updateAction($connexion, $_GET['id'], $_POST);
         break;
+    case 'delete':
+        PostsController\deleteAction($connexion, $_GET['id']);
+        break;
     default:
         PostsController\indexAction($connexion);
+        break;
 endswitch;
+

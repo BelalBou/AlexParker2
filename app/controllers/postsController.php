@@ -61,3 +61,12 @@ function editFormAction(PDO $connexion, int $id){
     include '../app/views/posts/editForm.php'; 
     $content = ob_get_clean();
 }
+
+
+function deleteAction(PDO $connexion, int $id) {
+    include_once "../app/models/postsModel.php";
+    $response = \App\Models\PostsModel\deleteOneById($connexion, $id);
+
+    header('Location: ' . BASE_PUBLIC_URL . 'posts');
+    exit();
+}

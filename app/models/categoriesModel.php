@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\categoriesModel;
+namespace App\Models\CategoriesModel;
 
 use \PDO;
 
